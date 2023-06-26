@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from './Logo'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { Button, buttonVariants } from './ui/button'
+import { Button, buttonVariants } from './ui/Button'
 
 const Navbar = () => {
   return (
