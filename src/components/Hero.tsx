@@ -4,7 +4,7 @@ import { Button } from './ui/Button'
 
 const Hero = () => {
   return (
-    <div className='flex'>
+    <div className='grid col-2'>
         <div className='space-y-4'>
           <h1 className='font-bold text-5xl'>Sunday Adejoh</h1>
           <p className='text-3xl'>Fullstack Developer 👋</p>
@@ -16,13 +16,13 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className='w-[200px] h-[200px]'>
+        <div className='max-w-[899px] max-h-[899px] block'>
           <Image
             height={200}
             width={200}
             src={'/images/propic.jpg'}
             alt='Profile pic'
-            className='object-fit'
+            className='object-cover'
           />
         </div>
     </div>

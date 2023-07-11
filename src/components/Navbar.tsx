@@ -3,6 +3,7 @@ import Logo from './Logo'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from './ui/Button'
+import { AlignRight } from 'lucide-react'
 
 const Navbar = () => {
   return (
@@ -16,36 +17,42 @@ const Navbar = () => {
             </div>
 
             
+            <div className='hidden md:flex'>
+                <ul className='flex items-center justify-between gap-x-4 mr-4'>
+                    <Link
+                        href={'/projects'}    
+                    >
+                        Projects
+                    </Link>
+                    <Link
+                        href={'/projects'}    
+                    >
+                        Blog
+                    </Link>
+                    <Link
+                        href={'/projects'}    
+                    >
+                        Experience
+                    </Link>
+                    <Link
+                        href={'/projects'}    
+                    >
+                        Contact
+                    </Link>
+                </ul>
 
-            <ul className='flex items-center justify-between gap-x-4 mr-4'>
-                <Link
-                    href={'/projects'}    
-                >
-                    Projects
-                </Link>
-                <Link
-                    href={'/projects'}    
-                >
-                    Blog
-                </Link>
-                <Link
-                    href={'/projects'}    
-                >
-                    Experience
-                </Link>
-                <Link
-                    href={'/projects'}    
-                >
-                    Contact
-                </Link>
-            </ul>
+                <div>
+                    <Button
+                        className={cn(buttonVariants(
+                        {variant: 'outline'}), 'bg-slate-100 text-slate-900 shadow-md hover:opacity-50')}
+                    >
+                        Make a Request
+                    </Button>
+                </div>
+            </div>
 
-            <div>
-                <Button
-                    className={cn(buttonVariants({variant: 'outline'}), 'bg-slate-100 text-slate-900 shadow-md')}
-                >
-                    Make a Request
-                </Button>
+            <div className='md:hidden cursor-pointer hover:opacity-50'>
+                <AlignRight size='36px' />
             </div>
         </div>
     </div>
