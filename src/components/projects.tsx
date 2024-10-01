@@ -4,6 +4,14 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Eye, Github } from "lucide-react";
 import { Card } from "./ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Projects = () => {
   return (
@@ -24,9 +32,23 @@ const Projects = () => {
               <p>
                 Future jobs is an Online Job Search and Apply Platform that
                 connects Employers to potential Talents (Job Seekers)...
-                <Button variant="ghost" size="sm" className="underline">
-                  more
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="sm" className="underline">
+                      more
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Are you absolutely sure?</DialogTitle>
+                      <DialogDescription>
+                        This action cannot be undone. This will permanently
+                        delete your account and remove your data from our
+                        servers.
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
               </p>
               <div className="flex items-center gap-3">
                 <Link
