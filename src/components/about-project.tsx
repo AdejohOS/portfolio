@@ -2,15 +2,18 @@ import { CheckCircle, Eye, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
-const AboutProject = () => {
+import { ProjectPostProps } from "./projects";
+
+interface AboutProjectProps {
+  selectedProject: ProjectPostProps;
+}
+const AboutProject = ({ selectedProject }: AboutProjectProps) => {
   return (
-    <div className="h-full w-full overflow-y-auto space-y-3">
-      A fully functional Job search application, built with Next 14, Typescript,
-      Auth.js, Prisma, Shadcn Ui, Uploadthing, Ky, Sql database, and Tanstack
-      Query.
+    <div className="h-full w-full overflow-y-auto space-y-3 prose">
+      {selectedProject.content}
       <div className="relative aspect-video overflow-hidden">
         <Image
-          src="/images/futurejobsHome.png"
+          src={selectedProject.image}
           alt="projectImage"
           fill
           className="object-contain rounded-md"

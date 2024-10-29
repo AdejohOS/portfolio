@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -16,19 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import AboutProject from "./about-project";
 
-export interface ProjectPostProps {
-  id: number;
-  title: string;
-  date: string;
-  description: string;
-  content: string;
-  slug: string;
-  image: string;
-  githubUrl: string;
-  siteUrl: string;
-}
-
-const projectPosts: ProjectPostProps[] = [
+const blogPosts = [
   {
     id: 1,
     title: "Getting Started with Next.js",
@@ -54,9 +40,7 @@ const projectPosts: ProjectPostProps[] = [
       Next, open the app in your code editor and start building!
     `,
     slug: "getting-started-with-next-js",
-    image: "/images/futurejobsHome.png", // Path to the image
-    githubUrl: "https//github.com/adejoh",
-    siteUrl: "https//vercel/adejoh",
+    image: "/images/nextjs-guide.jpg", // Path to the image
   },
   {
     id: 2,
@@ -95,8 +79,6 @@ const projectPosts: ProjectPostProps[] = [
     `,
     slug: "introduction-to-react-query",
     image: "/images/react-query.jpg", // Path to the image
-    githubUrl: "https//github.com/adejoh",
-    siteUrl: "https//vercel/adejoh",
   },
   {
     id: 3,
@@ -130,8 +112,6 @@ const projectPosts: ProjectPostProps[] = [
     `,
     slug: "mastering-css-grid",
     image: "/images/css-grid.jpg", // Path to the image
-    githubUrl: "https//github.com/adejoh",
-    siteUrl: "https//vercel/adejoh",
   },
   {
     id: 4,
@@ -163,19 +143,10 @@ const projectPosts: ProjectPostProps[] = [
     `,
     slug: "typescript-for-beginners",
     image: "/images/typescript-beginners.jpg", // Path to the image
-    githubUrl: "https//github.com/adejoh",
-    siteUrl: "https//vercel/adejoh",
   },
 ];
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] =
-    useState<ProjectPostProps | null>(null);
-
-  const handleProjectClick = (project: ProjectPostProps) => {
-    setSelectedProject(project);
-  };
-
   return (
     <section className="py-16 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4">
@@ -185,59 +156,51 @@ const Projects = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {projectPosts.map((project) => (
-            <Card className="overflow-hidden" key={project.id}>
-              <div className="relative aspect-video">
-                <Image
-                  src={project.image}
-                  alt="projectImg"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-3 space-y-2">
-                <h2 className="font-bold text-xl">{project.title}</h2>
-                <p>
-                  {project.description}...
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button
-                        onClick={() => handleProjectClick(project)}
-                        variant="ghost"
-                        size="sm"
-                        className="underline"
-                      >
-                        more
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-h-[80vh] overflow-auto">
-                      <DialogHeader>
-                        <DialogTitle>{selectedProject?.title}</DialogTitle>
-                        <DialogDescription>
-                          <AboutProject selectedProject={selectedProject!} />
-                        </DialogDescription>
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
-                </p>
-                <div className="flex items-center gap-3">
-                  <Link href={selectedProject?.githubUrl || ""} target="_blank">
-                    <Button variant="outline" className="flex gap-2">
-                      {" "}
-                      <Github className="size-4" /> Code
+          <Card className="overflow-hidden">
+            <div className="relative aspect-square">
+              <Image src="/images/Challenge.png" alt="projectImg" fill />
+            </div>
+            <div className="p-3 space-y-2">
+              <h2 className="font-bold text-xl">Future jobs</h2>
+              <p>
+                Future jobs is an Online Job Search and Apply Platform that
+                connects Employers to potential Talents (Job Seekers)...
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="sm" className="underline">
+                      more
                     </Button>
-                  </Link>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>About FutureJobs</DialogTitle>
+                      <DialogDescription>
+                        <AboutProject />
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+              </p>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="https://github.com/AdejohOS/futurejobs"
+                  target="_blank"
+                >
+                  <Button variant="outline" className="flex gap-2">
+                    {" "}
+                    <Github className="size-4" /> Code
+                  </Button>
+                </Link>
 
-                  <Link href={project.siteUrl || ""}>
-                    <Button variant="theme" className="flex gap-2">
-                      {" "}
-                      <Eye className="size-4" /> Live page
-                    </Button>
-                  </Link>
-                </div>
+                <Link href="/">
+                  <Button variant="theme" className="flex gap-2">
+                    {" "}
+                    <Eye className="size-4" /> Live page
+                  </Button>
+                </Link>
               </div>
-            </Card>
-          ))}
+            </div>
+          </Card>
         </div>
       </div>
     </section>
