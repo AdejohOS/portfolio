@@ -1,30 +1,31 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next'
+import './globals.css'
 
-import { Figtree, Playfair_Display } from "next/font/google";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-import { cn } from "@/lib/utils";
+import { Figtree, Playfair_Display } from 'next/font/google'
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
+import { cn } from '@/lib/utils'
+import Providers from '@/components/providers'
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
+const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
 const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
-});
+  subsets: ['latin'],
+  variable: '--font-serif'
+})
 
 export const metadata: Metadata = {
-  title: "Sunday Ojochenemi Adejoh | Fullstack Developer",
+  title: 'Sunday Ojochenemi Adejoh | Fullstack Developer',
   description:
-    "Sunday Adejoh is a Fullstack Developer with a passion for Excellence",
-};
+    'Sunday Adejoh is a Fullstack Developer with a passion for Excellence'
+}
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang='en' suppressHydrationWarning>
       <body
         className={cn(
           `flex min-h-screen flex-col font-sans antialiased`,
@@ -32,10 +33,12 @@ export default function RootLayout({
           playfair.variable
         )}
       >
-        <Navbar />
-        <main className="grow">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className='grow'>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
-  );
+  )
 }

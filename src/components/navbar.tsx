@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
 import MobileMenu from './mobile-menu'
-import { Moon } from 'lucide-react'
+import ThemeToggle from './theme-toggle'
 
 const Navbar = () => {
   return (
@@ -24,9 +24,7 @@ const Navbar = () => {
             <MobileMenu />
           </div>
 
-          <Button className='' variant='secondary' size='icon'>
-            <Moon className='size-4' />
-          </Button>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
