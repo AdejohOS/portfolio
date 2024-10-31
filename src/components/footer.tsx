@@ -13,7 +13,7 @@ const Footer = () => {
         <div className='grid grid-cols-1 gap-2 md:grid-cols-3'>
           <div className='order-1 space-y-2 md:order-first'>
             <Link href='/'>
-              <code className='text-2xl font-bold'>AdejohOS</code>
+              <code className='font-serif text-2xl font-bold'>AOS</code>
             </Link>
             <ul className='flex items-center justify-center gap-3 md:justify-start'>
               <Link href='/'>
@@ -38,7 +38,7 @@ const Footer = () => {
               </Link>
             </ul>
             <p className='text-center text-sm md:text-left'>
-              Sunday Adejoh &copy; 2024
+              Sunday Ojochenemi Adejoh &copy; 2024
             </p>
           </div>
           <div>

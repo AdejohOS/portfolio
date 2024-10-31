@@ -1,6 +1,7 @@
 import { getPosts } from '@/lib/posts'
 import React from 'react'
-import Posts from './_components/posts'
+
+import PostsWithSearch from './_components/posts-with-search'
 
 const PostPage = async () => {
   const posts = await getPosts()
@@ -8,7 +9,7 @@ const PostPage = async () => {
     <section className='pb-24 pt-40'>
       <div className='container max-w-6xl'>
         <h1 className='title mb-12 text-2xl font-bold'>Blog posts</h1>
-        <Posts posts={posts} />
+        <PostsWithSearch posts={posts} />
       </div>
     </section>
   )
