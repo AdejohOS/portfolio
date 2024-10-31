@@ -1,15 +1,15 @@
-import Experience from "@/components/experience";
-import Hero from "@/components/hero";
-import Message from "@/components/message";
-import Projects from "@/components/projects";
+import Experience from '@/components/experience'
+import Hero from '@/components/hero'
+import Message from '@/components/message'
+import Projects from '@/components/projects'
 
 export default function Home() {
   return (
-    <main>
+    <section className='pt-24'>
       <Hero />
       <Projects />
       <Experience />
       <Message />
-    </main>
-  );
+    </section>
+  )
 }

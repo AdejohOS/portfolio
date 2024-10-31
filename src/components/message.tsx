@@ -1,19 +1,20 @@
-import React from "react";
-import ContactForm from "./contact-form";
-import Image from "next/image";
+import React from 'react'
+
+import Image from 'next/image'
+import ContactForm from './contact-form'
 
 const Message = () => {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="">
-          <h2 className="text-3xl font-bold border-b-2 inline pb-2">
-            Contact Me{" "}
+    <section className='bg-gray-50 py-20'>
+      <div className='container max-w-6xl'>
+        <div className=''>
+          <h2 className='inline border-b-2 pb-2 text-3xl font-bold'>
+            Contact Me{' '}
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 md:gap-4">
-          <div className="relative aspect-square">
-            <Image src="/images/message.svg" alt="contact image" fill />
+        <div className='grid grid-cols-1 items-center gap-2 md:grid-cols-2 md:gap-4'>
+          <div className='relative aspect-square'>
+            <Image src='/images/message.svg' alt='contact image' fill />
           </div>
           <div>
             <ContactForm />
@@ -21,7 +22,7 @@ const Message = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Message;
+export default Message

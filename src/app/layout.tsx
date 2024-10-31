@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Figtree } from "next/font/google";
+import { Figtree, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { cn } from "@/lib/utils";
 
-const font = Figtree({ subsets: ["latin"] });
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   title: "Sunday Ojochenemi Adejoh | Fullstack Developer",
@@ -20,9 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body
+        className={cn(
+          `flex min-h-screen flex-col font-sans antialiased`,
+          figtree.variable,
+          playfair.variable
+        )}
+      >
         <Navbar />
-        {children}
+        <main className="grow">{children}</main>
         <Footer />
       </body>
     </html>
