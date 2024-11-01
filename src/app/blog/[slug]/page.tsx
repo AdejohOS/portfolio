@@ -6,6 +6,7 @@ import { formatDate } from '@/lib/utils'
 
 import MDXContent from '@/components/mdx-content'
 import { Button } from '@/components/ui/button'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const posts = await getPosts()
@@ -20,7 +21,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug(slug)
 
   if (!post) {
-    return <p>not found!</p>
+    notFound()
   }
 
   const { metadata, content } = post

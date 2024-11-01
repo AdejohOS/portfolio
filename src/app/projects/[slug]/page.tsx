@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const projects = await getProjects()
@@ -18,7 +19,7 @@ const Project = async ({ params }: { params: { slug: string } }) => {
   const project = await getProjectBySlug(slug)
 
   if (!project) {
-    return <h1>Not found!</h1>
+    notFound()
   }
   const { metadata, content } = project
   const { title, image, author, createdAt } = metadata

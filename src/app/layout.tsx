@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import { cn } from '@/lib/utils'
 import Providers from '@/components/providers'
+import { Toaster } from '@/components/ui/sonner'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
 const playfair = Playfair_Display({
@@ -37,6 +38,7 @@ export default function RootLayout({
           <Navbar />
           <main className='grow'>{children}</main>
           <Footer />
+          <Toaster />
         </Providers>
       </body>
     </html>

@@ -2,15 +2,14 @@ import React from 'react'
 
 import Image from 'next/image'
 import ContactForm from './contact-form'
+import Headings from './headings'
 
 const Message = () => {
   return (
-    <section className='bg-gray-50 py-20'>
+    <section className='bg-gray-50 py-20 dark:bg-background'>
       <div className='container max-w-6xl'>
         <div className=''>
-          <h2 className='inline border-b-2 pb-2 text-3xl font-bold'>
-            Contact Me{' '}
-          </h2>
+          <Headings title='Contact me' />
         </div>
         <div className='grid grid-cols-1 items-center gap-2 md:grid-cols-2 md:gap-4'>
           <div className='relative aspect-square'>

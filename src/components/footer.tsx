@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from './ui/button'
-import { Mail, Send } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import Link from 'next/link'
-import { Input } from './ui/input'
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 import { FiTwitter } from 'react-icons/fi'
+import NewsletterForm from './newsletter-form'
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-200 py-8'>
+    <footer className='bg-gray-200 py-8 dark:bg-background'>
       <div className='container max-w-6xl'>
         <div className='grid grid-cols-1 gap-2 md:grid-cols-3'>
           <div className='order-1 space-y-2 md:order-first'>
@@ -65,22 +65,7 @@ const Footer = () => {
             <p className='text-center text-sm md:text-right'>
               Subscribe to my newsletter!
             </p>
-            <form action=''>
-              <div className='flex justify-center md:justify-end'>
-                <Input
-                  placeholder='email@domain.com'
-                  type='email'
-                  className='w-[200px] rounded-r-none bg-slate-50'
-                />
-                <Button
-                  type='submit'
-                  variant='theme'
-                  className='rounded-l-none'
-                >
-                  <Send className='size-4' />
-                </Button>
-              </div>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>

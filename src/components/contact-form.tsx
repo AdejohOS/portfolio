@@ -1,106 +1,111 @@
-"use client";
-import React from "react";
-import { Card } from "./ui/card";
-import {
-  Form,
-  FormControl, 
-  
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "./ui/form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
+'use client'
+import React from 'react'
+import { Card } from './ui/card'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { Input } from './ui/input'
+import { Textarea } from './ui/textarea'
+import { Button } from './ui/button'
+import { ContactFormSchema, ContactFormValues } from '@/lib/schemas'
+import { contactFormAction } from '@/actions/actions'
+import { toast } from 'sonner'
 
 const ContactForm = () => {
-  const formSchema = z.object({
-    name: z.string().min(2).max(100),
-    email: z.string().email({ message: "Email is required" }),
-    message: z.string().min(50).max(1000),
-  });
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(ContactFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  });
+      name: '',
+      email: '',
+      message: ''
+    }
+  })
 
-  const onSubmit = () => {};
+  const onSubmit: SubmitHandler<ContactFormValues> = async data => {
+    const result = await contactFormAction(data)
+    if (result.error) {
+      toast.error('An error occured! Please try again.')
+      return
+    }
+    toast.success('Message sent successfully!')
+    reset()
+  }
+
   return (
-    <Card className="p-4">
+    <Card className='p-4'>
       <div>
-        <h2 className="font-semibold text-xl">Send me a message!</h2>
-        <p className="text-xs">Please fill out the form to send a message.</p>
+        <h2 className='text-xl font-semibold'>Send me a message!</h2>
+        <p className='text-xs'>Please fill out the form to send a message.</p>
       </div>
 
-      <Form {...form}>
-        <form className="space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your name." {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='mt-4 space-y-3'
+        noValidate
+      >
+        <div>
+          <Input
+            id='name'
+            type='text'
+            placeholder='Name'
+            autoComplete='given-name'
+            {...register('name')}
           />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your email."
-                    {...field}
-                    type="email"
-                  />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
+          {errors.name?.message && (
+            <p className='ml-1 mt-2 text-sm text-rose-500'>
+              {errors.name.message}
+            </p>
+          )}
+        </div>
+        <div>
+          <Input
+            id='email'
+            type='email'
+            placeholder='Email'
+            autoComplete='email'
+            {...register('email')}
           />
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <Textarea placeholder="Message..." {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
+          {errors.email?.message && (
+            <p className='ml-1 mt-2 text-sm text-rose-500'>
+              {errors.email.message}
+            </p>
+          )}
+        </div>
+        <div>
+          <Textarea
+            id='message'
+            placeholder='Message'
+            rows={4}
+            {...register('message')}
           />
-          <div className="flex gap-3 justify-end">
-            <Button className="" variant="outline" type="reset">
-              Reset
-            </Button>
-            <Button className="" variant="theme" type="submit">
-              Send message
-            </Button>
-          </div>
-        </form>
-      </Form>
+          {errors.message?.message && (
+            <p className='ml-1 mt-2 text-sm text-rose-500'>
+              {errors.message.message}
+            </p>
+          )}
+        </div>
+
+        <div className='flex justify-end gap-3'>
+          <Button
+            onClick={() => reset()}
+            variant='outline'
+            type='reset'
+            disabled={isSubmitting}
+          >
+            Reset
+          </Button>
+          <Button variant='theme' type='submit' disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Send message'}
+          </Button>
+        </div>
+      </form>
     </Card>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm
