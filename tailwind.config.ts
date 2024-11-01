@@ -1,7 +1,8 @@
 import type { Config } from 'tailwindcss'
 
-import typography from '@tailwindcss/typography'
-import animate from 'tailwindcss-animate'
+//import typography from '@tailwindcss/typography'
+//import animate from 'tailwindcss-animate'
+//import scrollbar-hide from 'tailwind-scrollbar-hide'
 
 import { fontFamily } from 'tailwindcss/defaultTheme'
 
@@ -75,6 +76,10 @@ const config: Config = {
     }
   },
 
-  plugins: [animate, typography]
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/typography')
+  ]
 }
 export default config

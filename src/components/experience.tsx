@@ -36,17 +36,21 @@ const Experience = () => {
               <p className='flex items-center gap-2'>
                 <DiJavascript className='h-5 w-5' />
                 <span>Javascript</span>{' '}
-                <code className='rounded-md bg-gray-50 px-2 py-1 text-xs'>
-                  console.log(&#34;I know javascript&#34;)
-                </code>
+                <span className='scrollbar-hide overflow-x-auto rounded-md bg-gray-50 px-2 py-1 dark:bg-accent'>
+                  <code className='min-w-full whitespace-nowrap text-xs'>
+                    console.log(&#34;I know javascript&#34;)
+                  </code>
+                </span>
               </p>
 
               <p className='flex items-center gap-2'>
                 {' '}
                 <DiPython className='h-5 w-5' /> <span>Python</span>
-                <code className='rounded-md bg-gray-50 px-2 py-1 text-xs'>
-                  print(&#34;I also know python&#34;)
-                </code>
+                <span className='scrollbar-hide overflow-auto rounded-md bg-gray-50 px-2 py-1 dark:bg-accent'>
+                  <code className='min-w-full overflow-x-auto whitespace-nowrap text-xs'>
+                    print(&#34;I also know python&#34;)
+                  </code>
+                </span>
               </p>
             </div>
           </Card>
