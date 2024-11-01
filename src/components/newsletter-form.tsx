@@ -13,6 +13,7 @@ export default function NewsLetterForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting }
   } = useForm<NewsletterValues>({
     resolver: zodResolver(NewsletterSchema),
@@ -28,6 +29,7 @@ export default function NewsLetterForm() {
       return
     }
     toast.success('Subscribed successfully!')
+    reset()
   }
 
   return (
