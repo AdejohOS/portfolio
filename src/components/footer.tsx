@@ -8,7 +8,7 @@ import NewsletterForm from './newsletter-form'
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-200 py-8 dark:bg-background'>
+    <footer className='bg-gray-100 py-8 dark:bg-background'>
       <div className='container max-w-6xl'>
         <div className='grid grid-cols-1 gap-2 md:grid-cols-3'>
           <div className='order-1 space-y-2 md:order-first'>
@@ -52,9 +52,6 @@ const Footer = () => {
               </Link>
               <Link href='/experience' className='underline'>
                 Experience
-              </Link>
-              <Link href='/contact' className='underline'>
-                Contact
               </Link>
             </ul>
           </div>

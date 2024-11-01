@@ -3,10 +3,12 @@ import React from 'react'
 import Image from 'next/image'
 import ContactForm from './contact-form'
 import Headings from './headings'
+import BackgroundPattern from './ui/bg-pattern'
 
 const Message = () => {
   return (
-    <section className='bg-gray-50 py-20 dark:bg-background'>
+    <section className='relative isolate pt-20 dark:bg-background'>
+      <BackgroundPattern />
       <div className='container max-w-6xl'>
         <div className=''>
           <Headings title='Contact me' />

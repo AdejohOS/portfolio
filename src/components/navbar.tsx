@@ -16,15 +16,13 @@ const Navbar = () => {
             <Link href='/projects'>Projects</Link>
             <Link href='/blog'>Blog</Link>
             <Link href='/experience'>Experience</Link>
-            <Link href='/contact'>Contact</Link>
           </ul>
+          <ThemeToggle />
 
           <Button variant='theme'>Make a Request</Button>
           <div className='md:hidden'>
             <MobileMenu />
           </div>
-
-          <ThemeToggle />
         </nav>
       </div>
     </header>

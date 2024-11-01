@@ -5,11 +5,13 @@ import { FiTwitter } from 'react-icons/fi'
 import { FileBarChart, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import BackgroundPattern from './ui/bg-pattern'
 
 const Hero = () => {
   return (
-    <section className=''>
-      <div className='container max-w-6xl py-20'>
+    <section className='relative isolate pb-20 pt-10 md:py-20'>
+      <BackgroundPattern />
+      <div className='container max-w-6xl'>
         <div className='items-center justify-center gap-5 md:flex'>
           <div className='mb-8 space-y-4 text-center md:text-left'>
             <h1 className='title text-5xl'>Sunday Adejoh</h1>
