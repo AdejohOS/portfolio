@@ -2,6 +2,13 @@ import { getPosts } from '@/lib/posts'
 import React from 'react'
 
 import PostsWithSearch from './_components/posts-with-search'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'With every hurdle come something new, these is a collection of my experience in words!'
+}
 
 const PostPage = async () => {
   const posts = await getPosts()

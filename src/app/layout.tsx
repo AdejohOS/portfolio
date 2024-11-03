@@ -15,7 +15,10 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Sunday Ojochenemi Adejoh | Fullstack Developer',
+  title: {
+    template: ' %s | Sunday Ojochenemi Adejoh',
+    default: 'Sunday Ojochenemi Adejoh | Fullstack Developer'
+  },
   description:
     'Sunday Adejoh is a Fullstack Developer with a passion for Excellence'
 }

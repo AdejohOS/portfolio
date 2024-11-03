@@ -1,5 +1,12 @@
 import { getProjects } from '@/lib/projects'
 import Projects from './_components/projects'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description:
+    'I have built quite a number of projects, these are some for your delight!'
+}
 
 const ProjectPage = async () => {
   const projects = await getProjects()
