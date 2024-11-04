@@ -33,7 +33,7 @@ export default function SocialShare({ title }: SocialShareProps) {
         Share this post <FaShare className='h-4' />
       </h2>
       <ul className='flex items-center gap-2'>
-        <TwitterShareButton url={url} title={title} via='b_skilz'>
+        <TwitterShareButton url={url} title={title}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
 
@@ -54,7 +54,7 @@ export default function SocialShare({ title }: SocialShareProps) {
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
 
-        <EmailShareButton url={url} subject={'Next Share'} body={title}>
+        <EmailShareButton url={url} subject={'AOS Blog '} body={title}>
           <EmailIcon size={32} round />
         </EmailShareButton>
       </ul>
