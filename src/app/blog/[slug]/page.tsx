@@ -7,12 +7,36 @@ import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
 import { Button } from '@/components/ui/button'
 import { notFound } from 'next/navigation'
+import SocialShare from '@/components/social-share'
+import { Metadata } from 'next'
 
+// static params for posts
 export async function generateStaticParams() {
   const posts = await getPosts()
   const slugs = posts.map(post => ({ slug: post.slug }))
 
   return slugs
+}
+
+// metadata for post
+export async function generateMetadata({
+  params
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+  return {
+    title: post?.metadata.title,
+    description: post?.metadata.summary,
+    openGraph: {
+      images: [post?.metadata.image || ''] // Set the og:image meta tag for social sharing
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: post?.metadata.image
+    }
+  }
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
@@ -54,9 +78,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <p className='mt-3 text-xs text-muted-foreground'>
             {author} / {formatDate(createdAt ?? '')}
           </p>
+          <SocialShare title={post.metadata.title} />
         </header>
 
-        <main className='prose dark:prose-invert mt-16'>
+        <main className='prose mt-16 dark:prose-invert'>
           <MDXContent source={content} />
         </main>
       </div>
