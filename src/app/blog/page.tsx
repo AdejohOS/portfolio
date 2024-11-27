@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'With every hurdle come something new, these is a collection of my experience in words!'
+    'With every hurdle come something new, this is a collection of my experience in words!'
 }
 
 const PostPage = async () => {

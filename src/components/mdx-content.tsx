@@ -2,6 +2,7 @@ import { HTMLProps, JSX, PropsWithChildren } from 'react'
 import { highlight } from 'sugar-high'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import Counter from './counter'
+import AuthComparisonTable from './other/auth-comparison-table'
 
 function Code({
   children,
@@ -14,7 +15,8 @@ function Code({
 
 const components: MDXRemoteProps['components'] = {
   code: Code,
-  Counter
+  Counter,
+  AuthComparisonTable
 }
 
 export default function MDXContent(

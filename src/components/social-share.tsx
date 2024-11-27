@@ -41,7 +41,7 @@ export default function SocialShare({ title }: SocialShareProps) {
           url={url}
           title={title}
           quote={title}
-          hashtag={'#Share post'}
+          hashtag={'AOS Blog'}
         >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
@@ -54,7 +54,7 @@ export default function SocialShare({ title }: SocialShareProps) {
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
 
-        <EmailShareButton url={url} subject={'AOS Blog '} body={title}>
+        <EmailShareButton url={url} subject={'AOS Blog'} body={title}>
           <EmailIcon size={32} round />
         </EmailShareButton>
       </ul>
