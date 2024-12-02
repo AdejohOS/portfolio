@@ -1,10 +1,8 @@
 import React from 'react'
-import { Button } from './ui/button'
-import { Mail } from 'lucide-react'
 import Link from 'next/link'
-import { FaGithub, FaInstagram } from 'react-icons/fa'
-import { FiTwitter } from 'react-icons/fi'
+
 import NewsletterForm from './newsletter-form'
+import SocialLinks from './social-links'
 
 const Footer = () => {
   return (
@@ -15,30 +13,9 @@ const Footer = () => {
             <Link href='/'>
               <code className='font-serif text-2xl font-bold'>AOS</code>
             </Link>
-            <ul className='flex items-center justify-center gap-3 md:justify-start'>
-              <Link href='/'>
-                <Button variant='outline' className='rounded-full' size='icon'>
-                  <FaGithub className='size-4 text-gray-500' />
-                </Button>
-              </Link>
-              <Link href='/'>
-                <Button variant='outline' className='rounded-full' size='icon'>
-                  <FiTwitter className='size-4 text-gray-500' />
-                </Button>
-              </Link>
-              <Link href='/'>
-                <Button variant='outline' className='rounded-full' size='icon'>
-                  <FaInstagram className='size-4 text-gray-500' />
-                </Button>
-              </Link>
-              <Link href='/'>
-                <Button variant='outline' className='rounded-full' size='icon'>
-                  <Mail className='size-4 text-gray-500' />
-                </Button>
-              </Link>
-            </ul>
+            <SocialLinks />
             <p className='text-center text-sm md:text-left'>
-              Sunday Ojochenemi Adejoh &copy; 2024
+              Adejoh Ojochenemi Sunday &copy; 2024
             </p>
           </div>
           <div>
