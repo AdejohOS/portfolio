@@ -17,9 +17,16 @@ const Page = () => {
           Experience & Certification
         </h1>
         <div>
-          <ul>
+          <ul className='space-y-3'>
             <li className='flex items-center gap-2'>
-              <p>- Meta Frontend Developer Course </p>
+              <p>- Meta Frontend Developer Professional Certificate </p>
+
+              <Link href='/' className=''>
+                <ArrowUpRight className='size-4' />
+              </Link>
+            </li>
+            <li className='flex items-center gap-2'>
+              <p>- Havard CS50 </p>
 
               <Link href='/' className=''>
                 <ArrowUpRight className='size-4' />
