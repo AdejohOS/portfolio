@@ -64,13 +64,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
         </Button>
 
         {image && (
-          <div className='relative mb-6 aspect-video h-96 w-full overflow-hidden rounded-lg'>
-            <Image
-              src={image}
-              alt={title || ''}
-              className='object-cover'
-              fill
-            />
+          <div className='relative mb-6 aspect-video w-full overflow-hidden rounded-lg'>
+            <Image src={image} alt={title || ''} className='' fill />
           </div>
         )}
         <header>

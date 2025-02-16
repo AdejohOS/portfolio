@@ -1,0 +1,486 @@
+---
+title:
+  Crafting a Powerful Rich Text Editor with Novel, Next.js, Shadcn/ui, Zod, and
+  Prisma
+summary:
+  Building a rich text editor with tools like Novel, Next.js, Shadcn/ui, Zod,
+  and Prisma showcases the power of combining modern, developer-friendly
+  technologies. With Novel’s customizable editor, Shadcn/ui’s elegant
+  components, Zod’s validation, and Prisma’s seamless database integration, you
+  can create a robust and scalable editing experience.
+image: /images/posts/authMethods.png
+author: 'Sunday Adejoh'
+createdAt: '2025-01-20'
+---
+
+## **Introduction**
+
+Building a rich text editor for modern web applications requires a balance of
+functionality, scalability, and design. With the right tools, you can create an
+editor that is intuitive for users while being robust and maintainable for
+developers.
+
+In this article, we'll walk through the process of creating a powerful rich text
+editor using Novel, a customizable WYSIWYG editor; Next.js, a React-based
+framework; shadcn/ui, for beautifully styled UI components; Zod, for schema
+validation; and Prisma, for seamless database integration. By the end, you'll
+have a feature-rich editor perfect for applications like blogs, CMS platforms,
+or note-taking tools.
+
+### **Tools used**
+
+- **[Next.js:](https://nextjs.org/)** A full-stack framework for React
+  applications.
+- **[Novel:](https://novel.sh/)** A robust, customizable WYSIWYG editor.
+- **[Prisma:](https://www.prisma.io/)** A powerful ORM for database management.
+- **[Shadcn/ui:](https://ui.shadcn.com/)** A library for beautifully styled UI
+  components.
+
+## **Prerequisites**
+
+**_Required knowledge:_**
+
+- Basic familiarity with Next.js and React.
+- Understanding of Prisma for database handling.
+- Node.js and npm/yarn installed.
+
+## **Lets Get Started**
+
+So we have a project form with three fields (title, summary, content) that after
+validation submits data to our database using server actions with react's
+useActionState and correctly handles errors.
+
+`src/app/projects/create/_components/project-form.tsx`
+
+```bash
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useActionState, useEffect } from "react";
+import { createProjectAction } from "@/actions/action";
+import { ActionResponse } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+
+const initialState: ActionResponse = {
+  success: false,
+  message: "",
+};
+
+export default function ProjectForm() {
+  const [state, formAction, isPending] = useActionState(
+    createProjectAction,
+    initialState
+  );
+
+  useEffect(() => {
+    if (state?.message) {
+      toast(state.message, {
+        icon: state.success ? (
+          <CheckCircle2 className="h-4 w-4" />
+        ) : (
+          <TriangleAlert className="h-4 w-4" />
+        ),
+      });
+    }
+  }, [state]);
+  return (
+    <>
+      <form action={formAction} className="space-y-4" autoComplete="on">
+        <div className="space-y-2">
+          <Label htmlFor="title">Title</Label>
+          <Input
+            placeholder="Project title"
+            id="title"
+            name="title"
+            autoComplete="title"
+            aria-describedby="title-error"
+            required
+            disabled={isPending}
+            className={state.errors?.title ? "border-red-500" : ""}
+          />
+          {state.errors?.title && (
+            <p id="title-error" className="text-sm text-red-500">
+              {state.errors.title[0]}
+            </p>
+          )}
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="summary">Summary</Label>
+          <Textarea
+            placeholder="Give a brief summary"
+            id="summary"
+            name="summary"
+            autoComplete="summary"
+            aria-describedby="summary-error"
+            required
+            minLength={50}
+            maxLength={500}
+            disabled={isPending}
+            className={cn(
+              `resize-none`,
+              state.errors?.summary && "border-red-500"
+            )}
+          />
+          {state.errors?.summary && (
+            <p id="summary-error" className="text-sm text-red-500">
+              {state.errors.summary[0]}
+            </p>
+          )}
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="content">Description</Label>
+          <Textarea
+            placeholder="Full description of your project..."
+            id="content"
+            name="content"
+            autoComplete="content"
+            aria-describedby="content"
+            disabled={isPending}
+            className="resize-none"
+          />
+        </div>
+
+        <div className="flex justify-end space-x-3">
+          <Button type="button" variant="outline" disabled={isPending}>
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            className="flex items-center space-x-3"
+            disabled={isPending}
+          >
+            {isPending && <Loader2 className="size-4 animate-spin" />}
+            Create
+          </Button>
+        </div>
+      </form>
+    </>
+  );
+}
+```
+
+Form submission with Nextjs ServerActions
+
+`src/actions/action.ts`
+
+```bash
+"use server";
+
+import { prisma } from "@/lib/prisma";
+import { ProjectSchema } from "@/lib/schema";
+import { ActionResponse, ProjectType } from "@/lib/types";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+
+function createSlug(title: "string): string {"
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
+export async function createProjectAction(
+  prevState: ActionResponse | null,
+  formData: FormData
+): Promise<ActionResponse> {
+  try {
+    const rawData: ProjectType = {
+      title: "formData.get(\"title\") as string,"
+      summary: formData.get("summary") as string,
+      content: formData.get("content") as string,
+    };
+
+    const validatedData = ProjectSchema.safeParse(rawData);
+
+    if (!validatedData.success) {
+      return {
+        success: false,
+        message: "Invalid form fields",
+        errors: validatedData.error.flatten().fieldErrors,
+      };
+    }
+
+    const { title, summary, content } = validatedData.data;
+    const slug = createSlug(title);
+    await prisma.project.create({
+      data: {
+        title,
+        slug,
+        summary,
+        content,
+      },
+    });
+
+    return {
+      success: true,
+      message: "Project created successfully!",
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      success: false,
+      message: "An unexpected error occurred",
+    };
+  } finally {
+    revalidatePath("/");
+    redirect("/");
+  }
+}
+```
+
+A zod schema for form validation
+
+`src/lib/schema.ts`
+
+```bash
+import { z } from "zod";
+
+export const ProjectSchema = z.object({
+  title: "z.string().min(1, \"Minimum of one character allowed\"),"
+  summary: z
+    .string()
+    .min(50, "Summary should not be less than 50 characters")
+    .max(500, "Summary should be less than 500 characters"),
+  content: z.string(),
+});
+export type ProjectValues = z.infer<typeof ProjectSchema>;
+```
+
+Prisma schema
+
+`prisma/schema.prisma`
+
+```bash
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id        String  @id @default(cuid())
+  title     String
+  slug      String @unique
+  summary   String @db.Text
+  content   String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+```
+
+Product type
+
+`src/lib/types.ts`
+
+```bash
+export interface ProjectType {
+  title: "string;"
+  slug?: string;
+  summary: string;
+  content: string;
+  createdAt?: Date;
+}
+
+export interface ActionResponse {
+  success: boolean;
+  message: string;
+  errors?: {
+    [K in keyof ProjectType]?: string[];
+  };
+}
+```
+
+## **Novel Editor**
+
+Novel Editor is a rich text editor (WYSIWYG), it supports formatting options
+like bold, italic, headings, lists, links, and more.
+
+```bash
+npm i novel
+```
+
+Get code solution from the example documentation on **(github)[]**
+
+Copy the editor folder and its content to your components folder, file structure
+should something look like this.
+
+You can customize your editor components however you want.
+
+## **Form Novel Integration**
+
+The next step would be changing the `<Textarea/>` component to the Novel
+
+`<Editor />` we have in the content field.
+
+The steps to achieving this on the `src/app/projects/create/project-form.tsx`
+include;
+
+- Import dependencies, dynamically import the Editor component to ensure it only
+  runs on the client side import dynamic from "next/dynamic";
+
+```bash
+const Editor = dynamic(() => import("@/components/editor/editor"), { ssr: false,});
+```
+
+- Set defaultValue (a placeholder)
+
+```bash
+export const defaultValue = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: 'Type " / " for commands or start writing...',
+        },
+      ],
+    },
+  ],
+};
+```
+
+- Set a state to hold the value for the content field.
+
+```bash
+const [content, setContent] = useState<string>("");
+```
+
+- On the content field, add the `<Editor />` component and set props
+  initialValue, onChange to their respective value. The hidden input field is
+  correctly set up to pass on field value to the form.
+
+```bash
+<div className="space-y-2">
+          <Label htmlFor="content">Description</Label>
+          <div className="prose prose-stone">
+            <Editor initialValue={defaultValue} onChange={setContent} />
+
+            <Input
+              id="content"
+              type="hidden"
+              name="content"
+              value={content}
+            />
+          </div>
+        </div>
+```
+
+### **Styling the Editor**
+
+Import tailwind typography, then add the plugin to your `tailwind.config.ts`
+file:
+
+`npm i @tailwindcss/typography`
+
+```bash
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
+}
+```
+
+Copy `prosemirror.css` and novel highlight styles globals.css from the github
+and paste them into your application. You can always customize this.
+
+## **Rendering content to the UI**
+
+We successfully created a new project that is saved in our database, how do we
+render it to the ui?
+
+First we get the project id/slug `src/app/projects/[slug]/page.tsx`
+
+```bash
+import { Button } from "@/components/ui/button";
+import { prisma } from "@/lib/prisma";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+
+import { notFound } from "next/navigation";
+import ProjectInfo from "./_components/project-info";
+
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const slug = (await params).slug;
+
+  const project = await prisma.project.findUnique({
+    where: {
+      slug: slug,
+    },
+  });
+
+  if (!project) {
+    return notFound;
+  }
+
+  return (
+    <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-4 ">
+      <div>
+        <Link href="/">
+          <Button className="flex items-center space-x-2" variant="ghost">
+            <ArrowLeft className="size-4" />
+            Back to projects
+          </Button>
+        </Link>
+      </div>
+      <ProjectInfo project={project} />
+    </section>
+  );
+};
+
+export default Page;
+```
+
+`src/app/projects[slug]/_components/project-info.tsx`
+
+```bash
+export default function ProjectInfo({ project }: ProjectInfoProps) {
+  return (
+    <div>
+      <h2 className="font-bold text-2xl">{project?.title}</h2>
+      <p className="max-w-3xl">
+        <em>{project?.summary}</em>
+      </p>
+
+      <div className="prose prose-stone">
+        <div dangerouslySetInnerHTML={{ __html: project.content }} />
+      </div>
+    </div>
+  );
+}
+```
+
+## **Conclusion**
+
+Building a rich text editor with tools like Novel, Next.js, Shadcn/ui, Zod, and
+Prisma showcases the power of combining modern, developer-friendly technologies.
+With Novel’s customizable editor, Shadcn/ui’s elegant components, Zod’s
+validation, and Prisma’s seamless database integration, you can create a robust
+and scalable editing experience.
+
+This approach ensures a great user experience and maintains code quality and
+performance. Whether you're building a blog, CMS, or collaborative tool, this
+stack provides a solid foundation for your project. The possibilities for
+further enhancements, like real-time collaboration or advanced formatting
+options, are endless, so get creative and take your editor to the next level!
+
+We now have a fully functional Novel editor in our project form. If you have
+trouble setting this up, please don't hesitate to reach out.
+
+The completed code can be found
+**[here](https://github.com/AdejohOS/novel-editor-article.git)**

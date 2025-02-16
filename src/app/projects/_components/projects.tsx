@@ -10,12 +10,12 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
         <li key={project.slug} className='group relative'>
           <Link href={`/projects/${project.slug}`}>
             {project.image && (
-              <div className='h-72 w-full overflow-hidden bg-muted sm:h-60'>
+              <div className='aspect-video w-full overflow-hidden bg-muted sm:h-60'>
                 <Image
                   src={project.image}
                   alt={project.title || ''}
                   fill
-                  className='rounded-lg object-cover object-center transition-transform duration-500 group-hover:scale-105'
+                  className='rounded-lg transition-transform duration-500 group-hover:scale-105'
                 />
               </div>
             )}
