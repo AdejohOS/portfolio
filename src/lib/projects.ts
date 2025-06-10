@@ -15,6 +15,8 @@ export type ProjectMetadata = {
   image?: string
   author?: string
   createdAt?: string
+  projectUrl?: string
+  githubUrl?: string
   slug: string
 }
 

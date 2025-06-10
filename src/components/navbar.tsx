@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <header className='fixed inset-x-0 z-50 bg-gray-50 py-6 backdrop-blur-sm dark:bg-background'>
       <div className='container flex max-w-6xl items-center justify-between'>
-        <Link href='/'>
+        <Link href='/' className=''>
           <code className='font-serif text-2xl font-bold'>AOS</code>
         </Link>
 

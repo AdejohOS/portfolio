@@ -23,7 +23,8 @@ const Hero = () => {
 
             <Button variant='theme'>
               <Link
-                href='/images/resume.pdf'
+                href='/images/sunday-adejoh-resume.pdf'
+                target='_blank'
                 download
                 className='flex items-center'
               >
