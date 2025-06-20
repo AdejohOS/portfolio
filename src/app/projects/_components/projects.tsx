@@ -4,21 +4,23 @@ import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Eye, SquareArrowOutUpRight } from 'lucide-react'
+import { Card } from '@/components/ui/card'
 
 const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
   return (
     <div className='space-y-8'>
       {projects.map(project => (
-        <div
+        <Card
           key={project.slug}
-          className='flex h-72 flex-col items-center gap-5 rounded bg-white drop-shadow-sm md:flex-row'
+          className='flex flex-col items-center gap-5 rounded-md bg-white p-2 drop-shadow-sm md:flex-row'
         >
           {project.image && (
-            <div className='group relative aspect-video h-full overflow-hidden rounded-lg'>
+            <div className='group relative h-full overflow-hidden rounded-lg'>
               <Image
                 src={project.image}
                 alt={project.title || ''}
-                fill
+                width={600}
+                height={400}
                 className='rounded-lg object-fill transition-transform duration-500 group-hover:scale-105'
               />
             </div>
@@ -27,7 +29,7 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
             <h2 className='title line-clamp-1 text-xl no-underline'>
               {project.title}
             </h2>
-            <p className='line-clamp-1 text-sm text-muted-foreground'>
+            <p className='line-clamp-3 text-sm text-muted-foreground'>
               {project.summary}
             </p>
             <p className='text-xs font-light text-muted-foreground'>
@@ -53,7 +55,7 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
               </Button>
             </div>
           </div>
-        </div>
+        </Card>
       ))}
     </div>
   )

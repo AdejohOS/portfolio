@@ -8,7 +8,7 @@ import SocialLinks from './social-links'
 
 const Hero = () => {
   return (
-    <section className='relative isolate pb-20 pt-10 md:py-20'>
+    <section className='relative isolate pb-20 pt-10'>
       <BackgroundPattern />
       <div className='container max-w-6xl'>
         <div className='items-center justify-center gap-5 md:flex'>
@@ -16,8 +16,9 @@ const Hero = () => {
             <h1 className='title text-5xl'>Adejoh Sunday</h1>
             <p className='text-3xl'>Fullstack Developer 👋</p>
             <p className='max-w-[500px] font-light text-muted-foreground'>
-              With a passion for building highly scalable and efficient
-              applications, with industry best practice and tools.
+              Hello!, I am a developer with a passion for building highly
+              scalable and efficient applications, with industry best practice
+              and tools.
             </p>
             <SocialLinks />
 
@@ -35,10 +36,10 @@ const Hero = () => {
           </div>
           <div className='relative aspect-video justify-end'>
             <Image
-              src='/images/pro.svg'
+              src='/images/hero.png'
               alt='profile'
-              height={400}
-              width={400}
+              height={600}
+              width={600}
             />
           </div>
         </div>
