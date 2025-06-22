@@ -1,9 +1,9 @@
 import NavItem from './nav-item'
 
 const navLinks = [
-  { name: 'Projects', href: '/projects' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Experience', href: '/experience' }
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Blog', href: '/#blog' },
+  { name: 'Technologies', href: '/#technologies' }
 ]
 
 const NavLinks = () => {

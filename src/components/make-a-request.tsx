@@ -4,7 +4,7 @@ import { Button } from './ui/button'
 
 const MakeRequest = () => {
   return (
-    <Link href='mailto: info@adejohos.dev'>
+    <Link href='#contact'>
       <Button variant='theme'>Make a Request</Button>
     </Link>
   )

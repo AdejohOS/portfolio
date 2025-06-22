@@ -18,6 +18,7 @@ export type ProjectMetadata = {
   projectUrl?: string
   githubUrl?: string
   slug: string
+  technologies?: string[]
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {

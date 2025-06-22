@@ -20,11 +20,14 @@ import BackgroundPattern from './ui/bg-pattern'
 
 const Experience = () => {
   return (
-    <section className='relative isolate bg-gray-100 py-20 dark:bg-background'>
+    <section
+      id='technologies'
+      className='relative isolate bg-gray-100 py-24 dark:bg-background'
+    >
       <BackgroundPattern />
       <div className='container max-w-6xl'>
         <div className='mb-16'>
-          <Headings title='Experience' />
+          <Headings title='Skills & Technologies' />
           <div className=''></div>
         </div>
         <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
@@ -36,7 +39,7 @@ const Experience = () => {
               <p className='flex items-center gap-2'>
                 <DiJavascript className='h-5 w-5' />
                 <span>Javascript</span>{' '}
-                <span className='scrollbar-hide overflow-x-auto rounded-md bg-gray-50 px-2 py-1 dark:bg-accent'>
+                <span className='overflow-x-auto rounded-md bg-gray-50 px-2 py-1 scrollbar-hide dark:bg-accent'>
                   <code className='min-w-full whitespace-nowrap text-xs'>
                     console.log(&#34;I know javascript&#34;)
                   </code>
@@ -46,7 +49,7 @@ const Experience = () => {
               <p className='flex items-center gap-2'>
                 {' '}
                 <DiPython className='h-5 w-5' /> <span>Python</span>
-                <span className='scrollbar-hide overflow-auto rounded-md bg-gray-50 px-2 py-1 dark:bg-accent'>
+                <span className='overflow-auto rounded-md bg-gray-50 px-2 py-1 scrollbar-hide dark:bg-accent'>
                   <code className='min-w-full overflow-x-auto whitespace-nowrap text-xs'>
                     print(&#34;I also know python&#34;)
                   </code>

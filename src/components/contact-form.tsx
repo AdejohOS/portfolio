@@ -39,8 +39,11 @@ const ContactForm = () => {
   return (
     <Card className='p-4'>
       <div>
-        <h2 className='text-xl font-semibold'>Send me a message!</h2>
-        <p className='text-xs'>Please fill out the form to send a message.</p>
+        <h2 className='text-xl font-semibold'>Send a message</h2>
+        <p className='text-xs'>
+          Fill out the form below and I will get back to you as soon as
+          possible.
+        </p>
       </div>
 
       <form
