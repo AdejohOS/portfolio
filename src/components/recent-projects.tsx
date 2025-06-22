@@ -6,7 +6,7 @@ import { getProjects } from '@/lib/projects'
 import Projects from '@/app/projects/_components/projects'
 
 export default async function RecentProjects() {
-  const projects = await getProjects(2)
+  const projects = await getProjects(3)
   return (
     <section>
       <div>
