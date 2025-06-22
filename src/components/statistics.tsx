@@ -9,7 +9,7 @@ export const Statistics = () => {
           <Headings title='By the Numbers' className='text-white' />
         </div>
         <div className='space-y-8'>
-          <div className='grid grid-cols-4 gap-5'>
+          <div className='grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4'>
             <div className='flex flex-col items-center space-y-4 border-r border-gray-600 px-4 py-8 text-center text-white'>
               <CodeXml className='size-8' />
               <p className='text-6xl font-bold'>30+</p>
