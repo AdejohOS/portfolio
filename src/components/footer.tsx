@@ -6,7 +6,7 @@ import SocialLinks from './social-links'
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-100 py-8 dark:bg-background'>
+    <footer className='bg-gray-700 py-8 text-gray-200 dark:bg-gray-800'>
       <div className='container max-w-6xl'>
         <div className='grid grid-cols-1 gap-2 md:grid-cols-3'>
           <div className='order-1 space-y-2 text-center md:order-first md:text-left'>
