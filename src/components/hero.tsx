@@ -36,7 +36,7 @@ const Hero = () => {
           </div>
           <div className='relative aspect-video justify-end'>
             <Image
-              src='/images/hero.png'
+              src='/images/port-hero.png'
               alt='profile'
               height={600}
               width={600}
