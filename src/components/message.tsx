@@ -47,7 +47,7 @@ const Message = () => {
           <motion.div variants={item} className="space-y-6">
 
             <h2 className="text-2xl font-bold">
-              Let's work together
+              Let&apos;s work together
             </h2>
 
             <p className="text-muted-foreground max-w-md">

@@ -70,7 +70,7 @@ const Experience = () => {
                   <DiJavascript className="size-6 text-[#3A6D8C]" />
                   Javascript
                   <code className="rounded-md bg-muted px-2 py-1 text-xs">
-                    console.log("Hello world")
+                    console.log(&apos;Hello world&apos;)
                   </code>
                 </p>
 
@@ -78,7 +78,7 @@ const Experience = () => {
                   <DiPython className="size-6 text-[#3A6D8C]" />
                   Python
                   <code className="rounded-md bg-muted px-2 py-1 text-xs">
-                    print("Hello world")
+                    print(&apos;Hello world&apos;)
                   </code>
                 </p>
 
