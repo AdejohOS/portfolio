@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 const ProjectPage = async () => {
   const projects = await getProjects()
   return (
-    <section className='pb-24 pt-40'>
+    <section className='bg-muted/30 pb-24 pt-36'>
       <div className='container max-w-6xl'>
-        <h1 className='title mb-12 text-2xl font-bold'>Projects</h1>
+        <h1 className='title mb-12 text-3xl font-bold'>Projects</h1>
         <Projects projects={projects} />
       </div>
     </section>

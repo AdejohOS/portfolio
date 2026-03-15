@@ -1,6 +1,6 @@
 'use client'
 
-import { Send } from 'lucide-react'
+import { Send, Loader2 } from 'lucide-react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -9,7 +9,7 @@ import { NewsletterSchema, NewsletterValues } from '@/lib/schemas'
 import { newsletterFormAction } from '@/actions/actions'
 import { toast } from 'sonner'
 
-export default function NewsLetterForm() {
+export default function NewsletterForm() {
   const {
     register,
     handleSubmit,
@@ -17,48 +17,53 @@ export default function NewsLetterForm() {
     formState: { errors, isSubmitting }
   } = useForm<NewsletterValues>({
     resolver: zodResolver(NewsletterSchema),
-    defaultValues: {
-      email: ''
-    }
+    defaultValues: { email: '' }
   })
 
   const onSubmit: SubmitHandler<NewsletterValues> = async data => {
     const result = await newsletterFormAction(data)
+
     if (result.error) {
-      toast.error('An error occured! Please try again.')
+      toast.error('Something went wrong. Please try again.')
       return
     }
+
     toast.success('Subscribed successfully!')
     reset()
   }
 
   return (
-    <form action='' onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <div className='flex justify-center md:justify-end'>
-          <Input
-            placeholder='email@domain.com'
-            id='email'
-            type='email'
-            className='w-[200px] rounded-r-none bg-slate-50'
-            disabled={isSubmitting}
-            {...register('email')}
-          />
-          <Button
-            type='submit'
-            variant='theme'
-            className='rounded-l-none'
-            disabled={isSubmitting}
-          >
+    <form onSubmit={handleSubmit(onSubmit)} className='space-y-2' noValidate>
+      <div className='flex justify-center md:justify-end'>
+        <Input
+          id='email'
+          type='email'
+          placeholder='email@domain.com'
+          className='w-[220px] rounded-r-none text-white placeholder:text-white/70'
+          disabled={isSubmitting}
+          aria-invalid={!!errors.email}
+          {...register('email')}
+        />
+
+        <Button
+          type='submit'
+          variant='theme'
+          className='rounded-l-none'
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <Loader2 className='size-4 animate-spin' />
+          ) : (
             <Send className='size-4' />
-          </Button>
-        </div>
-        {errors.email?.message && (
-          <p className='ml-1 mt-2 flex justify-center text-sm text-rose-500 md:justify-end'>
-            {errors.email.message}
-          </p>
-        )}
+          )}
+        </Button>
       </div>
+
+      {errors.email?.message && (
+        <p className='text-sm text-rose-500 md:text-right'>
+          {errors.email.message}
+        </p>
+      )}
     </form>
   )
 }

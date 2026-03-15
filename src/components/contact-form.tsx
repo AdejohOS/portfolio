@@ -10,6 +10,7 @@ import { Button } from './ui/button'
 import { ContactFormSchema, ContactFormValues } from '@/lib/schemas'
 import { contactFormAction } from '@/actions/actions'
 import { toast } from 'sonner'
+import { Loader } from 'lucide-react'
 
 const ContactForm = () => {
   const {
@@ -19,11 +20,7 @@ const ContactForm = () => {
     formState: { errors, isSubmitting }
   } = useForm<ContactFormValues>({
     resolver: zodResolver(ContactFormSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: ''
-    }
+    defaultValues: { name: '', email: '', message: '' }
   })
 
   const onSubmit: SubmitHandler<ContactFormValues> = async data => {
@@ -37,12 +34,12 @@ const ContactForm = () => {
   }
 
   return (
-    <Card className='p-4'>
+    <Card className='space-y-4 p-4'>
       <div>
         <h2 className='text-xl font-semibold'>Send a message</h2>
-        <p className='text-xs'>
-          Fill out the form below and I will get back to you as soon as
-          possible.
+
+        <p className='text-xs text-muted-foreground'>
+          Fill out the form below and I will get back to you shortly.
         </p>
       </div>
 
@@ -103,7 +100,14 @@ const ContactForm = () => {
             Reset
           </Button>
           <Button variant='theme' type='submit' disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Send message'}
+            {isSubmitting ? (
+              <span className='flex items-center'>
+                <Loader className='mr-2 size-4 animate-spin' />
+                Submitting...
+              </span>
+            ) : (
+              'Send message'
+            )}
           </Button>
         </div>
       </form>

@@ -24,7 +24,7 @@ const PostsWithSearch = ({ posts }: { posts: PostMetadata[] }) => {
           placeholder='Search posts...'
           value={query}
           onChange={e => setQuery(e.target.value)}
-          className='h-9 w-full sm:w-1/2'
+          className='h-9 w-full max-w-md'
         />
 
         {isFiltered && (
@@ -38,7 +38,11 @@ const PostsWithSearch = ({ posts }: { posts: PostMetadata[] }) => {
           </Button>
         )}
       </div>
+
       <Posts posts={filtered} />
+      {filtered.length === 0 && (
+        <p className='text-sm text-muted-foreground'>No posts found.</p>
+      )}
     </div>
   )
 }

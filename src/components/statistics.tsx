@@ -1,37 +1,62 @@
+'use client'
+
 import { CodeXml, Coffee, Medal, UsersRound } from 'lucide-react'
 import Headings from './headings'
+import { motion } from 'framer-motion'
+import CountUp from './ui/count-up'
+
+const stats = [
+  { icon: CodeXml, value: 30, label: 'Projects Completed' },
+  { icon: UsersRound, value: 12, label: 'Happy Clients' },
+  { icon: Coffee, value: 1000, label: 'Cups of Coffee' },
+  { icon: Medal, value: 3, label: 'Years of Experience' }
+]
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+}
+
+const item = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }
 
 export const Statistics = () => {
   return (
-    <section className='bg-gray-700 py-24 dark:bg-gray-800'>
+    <section className='bg-[#3A6D8C] py-24 text-white'>
       <div className='container max-w-6xl'>
-        <div className='mb-16'>
+        <div className='mb-16 text-center'>
           <Headings title='By the Numbers' className='text-white' />
         </div>
-        <div className='space-y-8'>
-          <div className='grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4'>
-            <div className='flex flex-col items-center space-y-4 border-r border-gray-600 px-4 py-8 text-center text-white'>
-              <CodeXml className='size-8' />
-              <p className='text-6xl font-bold'>30+</p>
-              <h3 className='text-lg font-bold'>Projects Completed</h3>
-            </div>
-            <div className='flex flex-col items-center space-y-4 border-r border-gray-600 px-4 py-8 text-center text-white'>
-              <UsersRound className='size-8' />
-              <p className='text-6xl font-bold'>12+</p>
-              <h3 className='text-lg font-bold'>Happy Clients</h3>
-            </div>
-            <div className='flex flex-col items-center space-y-4 border-r border-gray-600 px-4 py-8 text-center text-white'>
-              <Coffee className='size-8' />
-              <p className='text-6xl font-bold'>1,000+</p>
-              <h3 className='text-lg font-bold'>Cups of Coffee</h3>
-            </div>
-            <div className='flex flex-col items-center space-y-4 px-4 py-8 text-center text-white'>
-              <Medal className='size-8' />
-              <p className='text-6xl font-bold'>3+</p>
-              <h3 className='text-lg font-bold'>Years of Experience</h3>
-            </div>
-          </div>
-        </div>
+
+        <motion.div
+          variants={container}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true }}
+          className='grid grid-cols-2 gap-6 md:grid-cols-4'
+        >
+          {stats.map((stat, index) => {
+            const Icon = stat.icon
+
+            return (
+              <motion.div
+                key={index}
+                variants={item}
+                whileHover={{ y: -6 }}
+                className='flex flex-col items-center space-y-4 rounded-lg border border-white/10 bg-white/5 px-6 py-10 text-center backdrop-blur-sm transition'
+              >
+                <Icon className='size-8 text-[#FFF799]' />
+
+                <p className='text-5xl font-bold'>
+                  <CountUp value={stat.value} suffix='+' />
+                </p>
+
+                <h3 className='text-sm uppercase tracking-wide text-white/80'>
+                  {stat.label}
+                </h3>
+              </motion.div>
+            )
+          })}
+        </motion.div>
       </div>
     </section>
   )

@@ -13,9 +13,14 @@ export const metadata: Metadata = {
 const PostPage = async () => {
   const posts = await getPosts()
   return (
-    <section className='pb-24 pt-40'>
+    <section className='bg-muted/30 pb-24 pt-36'>
       <div className='container max-w-6xl'>
-        <h1 className='title mb-12 text-2xl font-bold'>Blog posts</h1>
+        <div className='mb-12 space-y-2'>
+          <h1 className='title text-3xl'>Blog posts</h1>
+          <p className='text-sm text-muted-foreground'>
+            Thoughts, lessons, and experiences from building software.
+          </p>
+        </div>
         <PostsWithSearch posts={posts} />
       </div>
     </section>

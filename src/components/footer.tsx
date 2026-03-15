@@ -1,47 +1,99 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
-import NewsletterForm from './newsletter-form'
-import SocialLinks from './social-links'
+import NewsletterForm from "./newsletter-form"
+import SocialLinks from "./social-links"
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-700 py-8 text-gray-200 dark:bg-gray-800'>
-      <div className='container max-w-6xl'>
-        <div className='grid grid-cols-1 gap-2 md:grid-cols-3'>
-          <div className='order-1 space-y-2 text-center md:order-first md:text-left'>
-            <Link href='/'>
-              <code className='font-serif text-2xl font-bold'>AOS</code>
+    <footer className="bg-[#325e79] py-12 text-white">
+      <div className="container max-w-6xl">
+
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+
+          {/* Brand */}
+          <div className="space-y-3 text-center md:text-left">
+
+            <Link href="/">
+              <code className="font-serif text-2xl font-bold">
+                AOS
+              </code>
             </Link>
+
             <SocialLinks />
-            <p className='text-center text-sm md:text-left'>
-              Adejoh Ojochenemi Sunday &copy; 2024
+
+            <p className="text-sm text-white/80">
+              Adejoh Ojochenemi Sunday © {new Date().getFullYear()}
             </p>
+
           </div>
-          <div>
-            <h2 className='text-center text-xl font-bold'>Quick links</h2>
-            <ul className='flex flex-col items-center justify-center gap-1'>
-              <Link href='/projects' className='underline'>
-                Projects
-              </Link>
-              <Link href='/blog' className='underline'>
-                Blog
-              </Link>
-              <Link href='/experience' className='underline'>
-                Experience
-              </Link>
+
+          {/* Quick Links */}
+          <div className="space-y-3 text-center">
+
+            <h3 className="text-lg font-semibold">
+              Quick Links
+            </h3>
+
+            <ul className="space-y-1 text-sm">
+
+              <li>
+                <Link
+                  href="/#projects"
+                  className="transition-colors hover:text-[#FFF799]"
+                >
+                  Projects
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/#blog"
+                  className="transition-colors hover:text-[#FFF799]"
+                >
+                  Blog
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/#technologies"
+                  className="transition-colors hover:text-[#FFF799]"
+                >
+                  Technologies
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/#contact"
+                  className="transition-colors hover:text-[#FFF799]"
+                >
+                  Contact
+                </Link>
+              </li>
+
             </ul>
+
           </div>
-          <div className='space-y-2'>
-            <h2 className='text-center text-xl font-bold md:text-right'>
+
+          {/* Newsletter */}
+          <div className="space-y-3 text-center md:text-right">
+
+            <h3 className="text-lg font-semibold">
               Newsletter
-            </h2>
-            <p className='text-center text-sm md:text-right'>
-              Subscribe to my newsletter!
+            </h3>
+
+            <p className="text-sm text-white/80">
+              Subscribe for updates and new posts.
             </p>
+
             <NewsletterForm />
+
           </div>
+
         </div>
+
       </div>
     </footer>
   )

@@ -52,7 +52,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const { title, image, createdAt, author } = metadata
   return (
     <section className='pb-24 pt-32'>
-      <div className='container max-w-6xl'>
+      <div className='container max-w-3xl'>
         <Button variant='ghost' className='mb-8'>
           <Link
             href='/blog'
@@ -65,18 +65,18 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
         {image && (
           <div className='relative mb-6 aspect-video w-full overflow-hidden rounded-lg'>
-            <Image src={image} alt={title || ''} className='' fill />
+            <Image src={image} alt={title || ''} className='object-cover' fill />
           </div>
         )}
-        <header>
-          <h1 className='title text-3xl font-bold'>{title}</h1>
+        <header className='space-y-3'>
+          <h1 className='title text-4xl'>{title}</h1>
           <p className='mt-3 text-xs text-muted-foreground'>
             {author} / {formatDate(createdAt ?? '')}
           </p>
           <SocialShare title={post.metadata.title} />
         </header>
 
-        <main className='prose mt-16 dark:prose-invert'>
+        <main className='prose prose-neutral mt-16 max-w-none dark:prose-invert'>
           <MDXContent source={content} />
         </main>
       </div>

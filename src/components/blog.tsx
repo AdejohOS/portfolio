@@ -4,11 +4,12 @@ import RecentPosts from './recent-posts'
 
 const Blog = () => {
   return (
-    <section id='blog' className='bg-gray-50 py-24 dark:bg-background'>
+    <section id='blog' className='bg-background py-24'>
       <div className='container max-w-6xl'>
         <div className='mb-16'>
           <Headings title='Recent posts' />
         </div>
+
         <RecentPosts />
       </div>
     </section>
