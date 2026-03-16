@@ -15,8 +15,8 @@ export default function NotFound() {
               <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
                 <h1 className='title text-3xl sm:text-5xl'>Page not found</h1>
                 <p className='mt-1 text-base text-muted-foreground'>
-                  The page you are looking for doesn’t exist or may have been
-                  moved.
+                  The page you are looking for doesn&apos;t exist or may have
+                  been moved.
                 </p>
               </div>
               <div className='mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6'>

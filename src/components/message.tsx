@@ -51,7 +51,7 @@ const Message = () => {
             </h2>
 
             <p className="text-muted-foreground max-w-md">
-              I’m always interested in new opportunities and exciting
+              I&apos;m always interested in new opportunities and exciting
               projects. Whether you have a question or just want to
               say hello, feel free to reach out.
             </p>
