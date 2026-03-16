@@ -46,7 +46,7 @@ export const Statistics = () => {
               >
                 <Icon className='size-8 text-[#FFF799]' />
 
-                <p className='text-5xl font-bold'>
+                <p className='text-4xl font-bold sm:text-5xl'>
                   <CountUp value={stat.value} suffix='+' />
                 </p>
 
