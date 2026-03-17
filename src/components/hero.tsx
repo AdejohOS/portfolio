@@ -42,7 +42,7 @@ const Hero = () => {
               variants={item}
               className="title text-5xl"
             >
-              Adejoh Sunday
+              Adejoh O. Sunday
             </motion.h1>
 
             <motion.p
@@ -111,7 +111,7 @@ const Hero = () => {
             className="relative flex justify-center md:justify-end"
           >
             <Image
-              src="/images/port-hero.png"
+              src="/images/port-hero-blue.png"
               alt="profile"
               height={600}
               width={600}
