@@ -10,7 +10,7 @@ import { Button } from './ui/button'
 import { ContactFormSchema, ContactFormValues } from '@/lib/schemas'
 import { contactFormAction } from '@/actions/actions'
 import { toast } from 'sonner'
-import { Loader } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 
 const ContactForm = () => {
   const {
@@ -102,7 +102,7 @@ const ContactForm = () => {
           <Button variant='theme' type='submit' disabled={isSubmitting}>
             {isSubmitting ? (
               <span className='flex items-center'>
-                <Loader className='mr-2 size-4 animate-spin' />
+                <Loader2 className='mr-2 size-4 animate-spin' />
                 Submitting...
               </span>
             ) : (

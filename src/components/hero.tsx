@@ -49,7 +49,7 @@ const Hero = () => {
               variants={item}
               className="text-3xl font-medium"
             >
-              <span className="bg-[#FFF799] px-2 rounded-md">
+              <span className="bg-[#FFF799] px-2 rounded-md dark:text-background">
                 Fullstack Developer
               </span>{" "}
               👋

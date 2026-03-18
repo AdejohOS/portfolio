@@ -21,7 +21,7 @@ const item = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }
 
 export const Statistics = () => {
   return (
-    <section className='bg-[#3A6D8C] py-24 text-white'>
+    <section className='bg-[#3A6D8C] py-24 text-white dark:bg-muted/40'>
       <div className='container max-w-6xl'>
         <div className='mb-16 text-center'>
           <Headings title='By the Numbers' className='text-white' />
