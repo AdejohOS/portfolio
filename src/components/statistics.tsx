@@ -7,9 +7,9 @@ import CountUp from './ui/count-up'
 
 const stats = [
   { icon: CodeXml, value: 30, label: 'Projects Delivered' },
-  { icon: UsersRound, value: 12, label: 'Clients Worked With' },
+  { icon: UsersRound, value: 12, label: 'Clients Served' },
   { icon: Medal, value: 3, label: 'Years Experience' },
-  { icon: Rocket, value: 100, label: 'Optimized Performance Builds' }
+  { icon: Rocket, value: 100, label: 'Fast & Optimized Builds' }
 ]
 
 const container = {
@@ -45,8 +45,8 @@ export const Statistics = () => {
               <motion.div
                 key={index}
                 variants={item}
-                whileHover={{ y: -6, scale: 1.03 }}
-                className='flex flex-col items-center space-y-4 rounded-lg border border-white/10 bg-white/5 px-6 py-10 text-center backdrop-blur-sm transition'
+                whileHover={{ y: -8, scale: 1.05 }}
+                className='flex flex-col items-center space-y-4 rounded-lg border border-white/10 bg-white/5 px-6 py-10 text-center backdrop-blur-sm transition hover:shadow-lg hover:shadow-[#FFF799]/10'
               >
                 <Icon className='size-8 text-[#FFF799]' />
 
