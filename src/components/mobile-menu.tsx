@@ -32,17 +32,26 @@ const MobileMenu = () => {
         >
           <motion.div variants={item}>
             <Link
-              href='/projects'
+              href='/#projects'
               className='flex w-full items-center gap-2 rounded-md bg-muted px-4 py-2 transition-all hover:bg-[#FFF799]'
             >
               <Code className='size-4 text-muted-foreground' />
               Projects
             </Link>
           </motion.div>
+          <motion.div variants={item}>
+            <Link
+              href='/#services'
+              className='flex w-full items-center gap-2 rounded-md bg-muted px-4 py-2 transition-all hover:bg-[#FFF799]'
+            >
+              <Code className='size-4 text-muted-foreground' />
+              Services
+            </Link>
+          </motion.div>
 
           <motion.div variants={item}>
             <Link
-              href='/blog'
+              href='/#blog'
               className='flex w-full items-center gap-2 rounded-md bg-muted px-4 py-2 transition-all hover:bg-[#FFF799]'
             >
               <Edit className='size-4 text-muted-foreground' />
@@ -52,11 +61,11 @@ const MobileMenu = () => {
 
           <motion.div variants={item}>
             <Link
-              href='/experience'
+              href='/#technologies'
               className='flex w-full items-center gap-2 rounded-md bg-muted px-4 py-2 transition-all hover:bg-[#FFF799]'
             >
               <Briefcase className='size-4 text-muted-foreground' />
-              Experience
+              Technologies
             </Link>
           </motion.div>
         </motion.div>
@@ -68,7 +77,7 @@ const MobileMenu = () => {
           className='mt-6 flex justify-center'
         >
           <Button className='bg-[#3A6D8C] text-white hover:bg-[#325e79]'>
-            Make a Request
+            <Link href='/#contact'>Hire Me</Link>
           </Button>
         </motion.div>
       </SheetContent>
