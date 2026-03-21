@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
+
 import { motion } from 'framer-motion'
 
 import {
@@ -10,8 +10,9 @@ import {
   DiJavascript,
   DiMongodb,
   DiMysql,
+  DiNodejs,
   DiPostgresql,
-  DiPython,
+  
   DiReact
 } from 'react-icons/di'
 
@@ -39,16 +40,24 @@ const Experience = () => {
   return (
     <section
       id="technologies"
-      className="relative isolate bg-muted/40 py-24"
+      className="relative isolate bg-background py-24"
     >
       <BackgroundPattern />
 
       <div className="container max-w-6xl">
 
-        <div className="mb-16">
-          <Headings title="Skills & Technologies" />
+        {/* HEADER */}
+        <div className="mb-16 text-center md:text-left">
+        
+
+          <Headings title="What I Can Do For You" />
+
+          <p className="text-muted-foreground max-w-xl mt-3">
+            I use modern technologies to build fast, scalable, and user-focused web applications that help businesses grow.
+          </p>
         </div>
 
+        {/* GRID */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -57,113 +66,102 @@ const Experience = () => {
           className="grid grid-cols-1 gap-6 md:grid-cols-2"
         >
 
-          {/* Languages */}
+          {/* FRONTEND */}
           <motion.div variants={item}>
-            <Card className="space-y-4 p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
-              <h4 className="text-center text-xl font-semibold">
-                Language Proficiency
+            <Card className="space-y-4 p-6 transition-all hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl">
+              <h4 className="text-xl font-semibold">
+                Frontend Development
               </h4>
 
-              <div className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Building fast, responsive, and visually engaging interfaces that improve user experience and drive conversions.
+              </p>
 
-                <p className="flex items-center gap-2">
-                  <DiJavascript className="size-6 text-[#3A6D8C]" />
-                  Javascript
-                  <code className="rounded-md bg-muted px-2 py-1 text-xs">
-                    console.log(&apos;Hello world&apos;)
-                  </code>
-                </p>
-
-                <p className="flex items-center gap-2">
-                  <DiPython className="size-6 text-[#3A6D8C]" />
-                  Python
-                  <code className="rounded-md bg-muted px-2 py-1 text-xs">
-                    print(&apos;Hello world&apos;)
-                  </code>
-                </p>
-
+              <div className="flex flex-wrap gap-3 pt-2">
+                <span className="flex items-center gap-2">
+                  <DiReact className="text-[#3A6D8C]" /> React
+                </span>
+                <span className="flex items-center gap-2">
+                  <RiNextjsFill className="text-[#3A6D8C]" /> Next.js
+                </span>
+                <span className="flex items-center gap-2">
+                  <DiJavascript className="text-[#3A6D8C]" /> JavaScript
+                </span>
               </div>
             </Card>
           </motion.div>
 
-          {/* Frameworks */}
+          {/* FULLSTACK */}
           <motion.div variants={item}>
-            <Card className="space-y-4 p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
-              <h4 className="text-center text-xl font-semibold">
-                Frameworks
+            <Card className="space-y-4 p-6 transition-all hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl">
+              <h4 className="text-xl font-semibold">
+                Full-Stack Development
               </h4>
 
-              <div className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Developing complete web applications using the MERN stack, from frontend interfaces to backend APIs.
+              </p>
 
-                <p className="flex items-center gap-2">
-                  <DiReact className="size-6 text-[#3A6D8C]" />
-                  React
-                  <ArrowRight size={16} />
-                  <RiNextjsFill className="size-5 text-[#3A6D8C]" />
-                  Next.js
-                </p>
-
-                <p className="flex items-center gap-2">
-                  <DiDjango className="size-6 text-[#3A6D8C]" />
-                  Django
-                </p>
-
+              <div className="flex flex-wrap gap-3 pt-2">
+                <span className="flex items-center gap-2">
+                  <DiMongodb className="text-[#3A6D8C]" /> MongoDB
+                </span>
+                <span className="flex items-center gap-2">
+                  <DiReact className="text-[#3A6D8C]" /> React
+                </span>
+                <span className="flex items-center gap-2">
+                  <DiNodejs className="text-[#3A6D8C]" /> Node.js
+                </span>
               </div>
             </Card>
           </motion.div>
 
-          {/* Databases */}
+          {/* BACKEND */}
           <motion.div variants={item}>
-            <Card className="space-y-4 p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
-              <h4 className="text-center text-xl font-semibold">
-                Databases
+            <Card className="space-y-4 p-6 transition-all hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl">
+              <h4 className="text-xl font-semibold">
+                Database & Backend
               </h4>
 
-              <div className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Designing secure, scalable backend systems and managing databases for reliable application performance.
+              </p>
 
-                <p className="flex items-center gap-2">
-                  <DiMongodb className="size-6 text-[#3A6D8C]" />
-                  MongoDB
-                </p>
-
-                <p className="flex items-center gap-2">
-                  <DiMysql className="size-6 text-[#3A6D8C]" />
-                  MySQL
-                </p>
-
-                <p className="flex items-center gap-2">
-                  <DiPostgresql className="size-6 text-[#3A6D8C]" />
-                  PostgreSQL
-                </p>
-
+              <div className="flex flex-wrap gap-3 pt-2">
+                <span className="flex items-center gap-2">
+                  <DiPostgresql className="text-[#3A6D8C]" /> PostgreSQL
+                </span>
+                <span className="flex items-center gap-2">
+                  <DiMysql className="text-[#3A6D8C]" /> MySQL
+                </span>
+                <span className="flex items-center gap-2">
+                  <DiDjango className="text-[#3A6D8C]" /> Django
+                </span>
               </div>
             </Card>
           </motion.div>
 
-          {/* Tools */}
+          {/* DEVOPS */}
           <motion.div variants={item}>
-            <Card className="space-y-4 p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
-              <h4 className="text-center text-xl font-semibold">
-                Tools
+            <Card className="space-y-4 p-6 transition-all hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl">
+              <h4 className="text-xl font-semibold">
+                Deployment & Tools
               </h4>
 
-              <div className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Deploying and maintaining applications with modern tools to ensure speed, reliability, and scalability.
+              </p>
 
-                <p className="flex items-center gap-2">
-                  <SiJest className="text-[#3A6D8C]" />
-                  Jest
-                </p>
-
-                <p className="flex items-center gap-2">
-                  <DiDocker className="size-6 text-[#3A6D8C]" />
-                  Docker
-                </p>
-
-                <p className="flex items-center gap-2">
-                  <DiAws className="size-6 text-[#3A6D8C]" />
-                  AWS
-                </p>
-
+              <div className="flex flex-wrap gap-3 pt-2">
+                <span className="flex items-center gap-2">
+                  <DiDocker className="text-[#3A6D8C]" /> Docker
+                </span>
+                <span className="flex items-center gap-2">
+                  <DiAws className="text-[#3A6D8C]" /> AWS
+                </span>
+                <span className="flex items-center gap-2">
+                  <SiJest className="text-[#3A6D8C]" /> Jest
+                </span>
               </div>
             </Card>
           </motion.div>

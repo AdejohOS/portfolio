@@ -1,96 +1,50 @@
 import React from "react"
 import Link from "next/link"
-
-import NewsletterForm from "./newsletter-form"
 import SocialLinks from "./social-links"
+import { Button } from "./ui/button"
 
 const Footer = () => {
   return (
-    <footer className="bg-[#325e79] py-12 text-white dark:bg-background" >
-      <div className="container max-w-6xl">
+    <footer className="bg-[#325e79] py-16 text-white dark:bg-background">
+      <div className="container max-w-6xl space-y-10 text-center md:text-left">
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        {/* CTA */}
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold">
+            Let&apos;s build something great together!
+          </h2>
 
-          {/* Brand */}
-          <div className="space-y-3 text-center md:text-left">
+          <p className="text-white/80 max-w-md">
+            Need a modern website or web app? I&apos;m available for freelance and full-time opportunities.
+          </p>
 
+          <div>
+            <Button className="bg-[#FFF799] text-black hover:bg-[#f5ef85]">
+              <Link href="#contact">
+                Start a Project
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* BOTTOM */}
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-6 md:flex-row">
+
+          {/* BRAND */}
+          <div className="space-y-2 text-center md:text-left">
             <Link href="/">
-              <code className="font-serif text-2xl font-bold">
+              <span className="font-serif text-xl font-bold">
                 AOS
-              </code>
+              </span>
             </Link>
 
-            <SocialLinks />
-
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/70">
               Adejoh Ojochenemi Sunday © {new Date().getFullYear()}
             </p>
-
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-3 text-center">
-
-            <h3 className="text-lg font-semibold">
-              Quick Links
-            </h3>
-
-            <ul className="space-y-1 text-sm">
-
-              <li>
-                <Link
-                  href="/#projects"
-                  className="transition-colors hover:text-[#FFF799]"
-                >
-                  Projects
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/#blog"
-                  className="transition-colors hover:text-[#FFF799]"
-                >
-                  Blog
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/#technologies"
-                  className="transition-colors hover:text-[#FFF799]"
-                >
-                  Technologies
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/#contact"
-                  className="transition-colors hover:text-[#FFF799]"
-                >
-                  Contact
-                </Link>
-              </li>
-
-            </ul>
-
-          </div>
-
-          {/* Newsletter */}
-          <div className="space-y-3 text-center md:text-right">
-
-            <h3 className="text-lg font-semibold">
-              Newsletter
-            </h3>
-
-            <p className="text-sm text-white/80">
-              Subscribe for updates and new posts.
-            </p>
-
-            <NewsletterForm />
-
-          </div>
+          {/* SOCIALS */}
+          <SocialLinks />
 
         </div>
 

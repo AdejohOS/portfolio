@@ -5,9 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { SquareArrowOutUpRight } from 'lucide-react'
+import { Code, SquareArrowOutUpRight } from 'lucide-react'
 import { Card } from '@/components/ui/card'
-import { GitHubLogoIcon } from '@radix-ui/react-icons'
+
 import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 
@@ -29,7 +29,7 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
     >
       {projects.map(project => (
         <motion.div key={project.slug} variants={item}>
-          <Card className='flex flex-col items-center gap-6 rounded-xl border border-l-4 border-border/40 border-l-[#FFF799] bg-background p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-[#3A6D8C]/40 hover:shadow-lg md:flex-row'>
+          <Card className='flex flex-col items-center gap-6 rounded-xl border border-l-4 border-border/40 border-l-[#FFF799] bg-background p-4 shadow-sm transition-all hover:-translate-y-1 hover:scale-[1.01] hover:border-[#3A6D8C]/40 hover:shadow-xl md:flex-row'>
             {project.image && (
               <div className='group relative aspect-[3/2] overflow-hidden rounded-lg md:w-2/5'>
                 <Image
@@ -46,9 +46,15 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
             <div className='space-y-4 md:w-3/5'>
               <h2 className='title text-xl'>{project.title}</h2>
 
-              <p className='line-clamp-3 text-sm text-muted-foreground'>
-                {project.summary}
-              </p>
+              <div className='space-y-2 text-sm text-muted-foreground'>
+                <p className='font-medium text-foreground'>What I built:</p>
+                <p className='line-clamp-2'>{project.summary}</p>
+
+                <p className='font-medium text-foreground'>Impact:</p>
+                <p className='line-clamp-2'>
+                  Improved user experience, performance, and overall usability.
+                </p>
+              </div>
 
               {project.technologies && (
                 <div className='flex flex-wrap gap-2'>
@@ -74,7 +80,7 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
                   rel='noopener noreferrer'
                 >
                   <Button variant='theme' className='w-full md:w-fit'>
-                    View Live
+                    View Project
                     <SquareArrowOutUpRight className='ml-2 h-4 w-4' />
                   </Button>
                 </Link>
@@ -88,8 +94,8 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
                     variant='outline'
                     className='w-full hover:border-[#3A6D8C] md:w-fit'
                   >
-                    Github
-                    <GitHubLogoIcon className='ml-2 h-4 w-4' />
+                    Code
+                    <Code className='ml-2 h-4 w-4' />
                   </Button>
                 </Link>
               </div>

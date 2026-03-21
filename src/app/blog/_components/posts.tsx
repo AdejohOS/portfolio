@@ -24,9 +24,14 @@ const Posts = ({ posts }: { posts: PostMetadata[] }) => {
       {posts.map(post => (
         <motion.li key={post.slug} variants={item}>
           <Link href={`/blog/${post.slug}`}>
-            <Card className='flex flex-col justify-between gap-4 border border-border/40 p-6 transition-all hover:-translate-y-1 hover:border-[#3A6D8C]/40 hover:shadow-lg'>
+            <Card className='flex flex-col justify-between gap-4 border border-border/40 p-6 transition-all hover:-translate-y-2 hover:scale-[1.01] hover:border-[#3A6D8C]/40 hover:shadow-lg'>
               <div className='max-w-xl'>
-                <p className='title text-lg'>{post.title}</p>
+                <p className='text-xs uppercase tracking-wide text-[#3A6D8C]'>
+                  Article
+                </p>
+                <p className='title text-lg leading-snug transition-colors hover:text-[#3A6D8C]'>
+                  {post.title}
+                </p>
 
                 <p className='mt-2 line-clamp-2 text-sm text-muted-foreground'>
                   {post.summary}

@@ -1,15 +1,15 @@
 'use client'
 
-import { CodeXml, Coffee, Medal, UsersRound } from 'lucide-react'
+import { CodeXml, Medal, Rocket, UsersRound } from 'lucide-react'
 import Headings from './headings'
 import { motion } from 'framer-motion'
 import CountUp from './ui/count-up'
 
 const stats = [
-  { icon: CodeXml, value: 30, label: 'Projects Completed' },
-  { icon: UsersRound, value: 12, label: 'Happy Clients' },
-  { icon: Coffee, value: 1000, label: 'Cups of Coffee' },
-  { icon: Medal, value: 3, label: 'Years of Experience' }
+  { icon: CodeXml, value: 30, label: 'Projects Delivered' },
+  { icon: UsersRound, value: 12, label: 'Clients Worked With' },
+  { icon: Medal, value: 3, label: 'Years Experience' },
+  { icon: Rocket, value: 100, label: 'Optimized Performance Builds' }
 ]
 
 const container = {
@@ -24,7 +24,11 @@ export const Statistics = () => {
     <section className='bg-[#3A6D8C] py-24 text-white dark:bg-muted/40'>
       <div className='container max-w-6xl'>
         <div className='mb-16 text-center'>
-          <Headings title='By the Numbers' className='text-white' />
+          <Headings title='Proven Results' className='text-white' />
+
+          <p className='mt-3 text-center text-gray-200'>
+            Delivering measurable results through modern web development.
+          </p>
         </div>
 
         <motion.div
@@ -41,7 +45,7 @@ export const Statistics = () => {
               <motion.div
                 key={index}
                 variants={item}
-                whileHover={{ y: -6 }}
+                whileHover={{ y: -6, scale: 1.03 }}
                 className='flex flex-col items-center space-y-4 rounded-lg border border-white/10 bg-white/5 px-6 py-10 text-center backdrop-blur-sm transition'
               >
                 <Icon className='size-8 text-[#FFF799]' />

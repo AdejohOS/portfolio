@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React from "react"
 import { Button } from "./ui/button"
@@ -35,9 +35,10 @@ const Hero = () => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="mb-8 space-y-5 text-center md:text-left"
+            className="mb-8 space-y-6 text-center md:text-left"
           >
 
+            {/* NAME */}
             <motion.h1
               variants={item}
               className="title text-5xl"
@@ -45,46 +46,62 @@ const Hero = () => {
               Adejoh O. Sunday
             </motion.h1>
 
+            {/* POSITION */}
             <motion.p
               variants={item}
-              className="text-3xl font-medium"
+              className="text-2xl font-semibold"
             >
               <span className="bg-[#FFF799] px-2 rounded-md dark:text-background">
-                Fullstack Developer
-              </span>{" "}
-              👋
+                Frontend Engineer (React / Next.js)
+              </span>
             </motion.p>
+
+        
+
+           <motion.h2
+  variants={item}
+  className="text-3xl font-bold leading-tight"
+>
+  I build modern websites that help businesses grow
+</motion.h2>
 
             <motion.p
-              variants={item}
-              className="max-w-[520px] text-muted-foreground"
-            >
-              Hello! I am a developer passionate about building highly
-              scalable and efficient applications using modern tools
-              and industry best practices.
-            </motion.p>
+  variants={item}
+  className="max-w-[500px] text-muted-foreground"
+>
+  I create fast, responsive, and visually engaging web experiences. I also build full-stack applications using the MERN stack when needed.
+</motion.p>
 
+            {/* SOCIALS */}
             <motion.div variants={item}>
               <SocialLinks />
             </motion.div>
 
+            {/* CTA BUTTONS */}
             <motion.div
               variants={item}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
+              className="flex flex-col gap-3 sm:flex-row sm:items-center"
             >
               <Button
                 variant="theme"
                 className="shadow-md hover:shadow-lg hover:shadow-[#3A6D8C]/20 transition-all"
               >
+                <Link href="#projects">View My Work</Link>
+              </Button>
+
+              <Button variant="outline">
+                <Link href="#contact">Hire Me</Link>
+              </Button>
+
+              <Button variant="ghost">
                 <Link
                   href="/images/sunday-adejoh-resume.pdf"
                   target="_blank"
                   download
                   className="flex items-center"
                 >
-                  Download Resume
-                  <ArrowDown className="size-5 pl-2" />
+                  Resume
+                  <ArrowDown className="size-4 ml-1" />
                 </Link>
               </Button>
             </motion.div>

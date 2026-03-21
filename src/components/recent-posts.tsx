@@ -19,7 +19,7 @@ const RecentPosts = async () => {
           href='/blog'
           className='inline-flex items-center gap-2 text-sm hover:text-[#3A6D8C]'
         >
-          <span>All posts</span>
+          <span>View all articles</span>
           <ArrowRightIcon className='size-4' />
         </Link>
       </Button>

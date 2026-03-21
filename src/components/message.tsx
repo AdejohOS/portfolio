@@ -7,6 +7,9 @@ import ContactForm from './contact-form'
 import Headings from './headings'
 import BackgroundPattern from './ui/bg-pattern'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from './ui/button'
+import { FaWhatsapp } from 'react-icons/fa'
 
 const container = {
   hidden: { opacity: 0 },
@@ -25,14 +28,21 @@ const Message = () => {
   return (
     <section
       id="contact"
-      className="relative isolate bg-muted/40 py-24"
+      className="relative isolate bg-background py-24"
     >
       <BackgroundPattern />
 
       <div className="container max-w-6xl space-y-12">
 
-        <div>
-          <Headings title="Get in Touch" />
+        {/* HEADER */}
+        <div className="text-center md:text-left">
+          
+
+          <Headings title="Let’s Build Something Great" />
+
+          <p className="text-muted-foreground max-w-xl mt-3">
+            Have a project in mind? I help businesses build modern, high-performing websites that attract users and drive growth.
+          </p>
         </div>
 
         <motion.div
@@ -47,15 +57,14 @@ const Message = () => {
           <motion.div variants={item} className="space-y-6">
 
             <h2 className="text-2xl font-bold">
-              Let&apos;s work together
+              Start your project today 🚀
             </h2>
 
             <p className="text-muted-foreground max-w-md">
-              I&apos;m always interested in new opportunities and exciting
-              projects. Whether you have a question or just want to
-              say hello, feel free to reach out.
+              Whether you need a landing page, a full website, or a web application, I&apos;m ready to help you bring your ideas to life.
             </p>
 
+            {/* CONTACT DETAILS */}
             <div className="space-y-3 text-sm">
 
               <div className="flex items-center gap-3">
@@ -73,6 +82,19 @@ const Message = () => {
                 Abuja, Nigeria
               </div>
 
+            </div>
+
+            {/* QUICK ACTION BUTTON */}
+            <div className="pt-4">
+              <Button className="bg-green-600 hover:bg-green-700 text-white">
+                <Link
+                  href="https://wa.me/2347063494394"
+                  target="_blank"
+                  className='flex items-center'
+                >
+                 <FaWhatsapp className='mr-2'/> Chat on WhatsApp
+                </Link>
+              </Button>
             </div>
 
           </motion.div>
