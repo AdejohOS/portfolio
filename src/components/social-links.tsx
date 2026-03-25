@@ -39,7 +39,7 @@ const SocialLinks = () => {
           <FaInstagram className='size-4 text-gray-500' />
         </Button>
       </Link>
-      <Link href='mailto: info@adejohos.dev' title='mail'>
+      <Link href='mailto: hello@adejoh.dev' title='mail'>
         <Button
           variant='outline'
           className='rounded-full drop-shadow'

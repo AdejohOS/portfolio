@@ -51,9 +51,7 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
                 <p className='line-clamp-2'>{project.summary}</p>
 
                 <p className='font-medium text-foreground'>Impact:</p>
-                <p className='line-clamp-2'>
-                  Improved user experience, performance, and overall usability.
-                </p>
+                <p className='line-clamp-2'>{project.impact}</p>
               </div>
 
               {project.technologies && (
@@ -85,19 +83,23 @@ const Projects = ({ projects }: { projects: ProjectMetadata[] }) => {
                   </Button>
                 </Link>
 
-                <Link
-                  href={project.githubUrl!}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Button
-                    variant='outline'
-                    className='w-full hover:border-[#3A6D8C] md:w-fit'
+                {project.githubUrl ? (
+                  <Link
+                    href={project.githubUrl}
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
-                    Code
-                    <Code className='ml-2 h-4 w-4' />
-                  </Button>
-                </Link>
+                    <Button
+                      variant='outline'
+                      className='w-full hover:border-[#3A6D8C] md:w-fit'
+                    >
+                      Code
+                      <Code className='ml-2 h-4 w-4' />
+                    </Button>
+                  </Link>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           </Card>

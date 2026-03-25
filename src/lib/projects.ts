@@ -4,14 +4,12 @@ import matter from 'gray-matter'
 
 const rootDirectory = path.join(process.cwd(), 'content', 'projects')
 
-export type Project = {
-  metadata: ProjectMetadata
-  content: string
-}
+export type Project = { metadata: ProjectMetadata; content: string }
 
 export type ProjectMetadata = {
   title?: string
   summary?: string
+  impact?: string
   image?: string
   author?: string
   createdAt?: string

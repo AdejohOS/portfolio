@@ -69,7 +69,7 @@ const Message = () => {
 
               <div className="flex items-center gap-3">
                 <Mail className="size-4 text-[#3A6D8C]" />
-                elusivebrown@gmail.com
+                hello@adejoh.dev
               </div>
 
               <div className="flex items-center gap-3">
