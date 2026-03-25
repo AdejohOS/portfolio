@@ -15,12 +15,38 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://adejoh.dev'),
   title: {
-    template: ' %s | Sunday Ojochenemi Adejoh',
-    default: 'Sunday Ojochenemi Adejoh | Fullstack Developer'
+    template: '%s | Sunday Ojochenemi Adejoh',
+    default: 'Sunday Ojochenemi Adejoh | Frontend Engineer'
   },
   description:
-    'Sunday Adejoh is a Fullstack Developer with a passion for Excellence'
+    'Sunday Ojochenemi Adejoh is a frontend engineer specializing in React and Next.js, building fast, modern, and user-focused web applications. He also develops full-stack applications with the MERN stack.',
+  keywords: [
+    'Sunday Adejoh',
+    'Adejoh',
+    'Frontend Engineer',
+    'React Developer',
+    'Next.js Developer',
+    'MERN Stack Developer',
+    'Web Developer Nigeria',
+    'Frontend Developer Abuja'
+  ],
+  openGraph: {
+    title: 'Sunday Ojochenemi Adejoh | Frontend Engineer',
+    description:
+      'Frontend engineer building fast, modern, and user-focused web applications with React, Next.js, and the MERN stack.',
+    url: 'https://adejoh.dev',
+    siteName: 'Adejoh',
+    locale: 'en_US',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sunday Ojochenemi Adejoh | Frontend Engineer',
+    description:
+      'Frontend engineer building fast, modern, and user-focused web applications with React, Next.js, and the MERN stack.'
+  }
 }
 
 export default function RootLayout({
@@ -32,7 +58,7 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body
         className={cn(
-          `flex min-h-screen flex-col font-sans antialiased`,
+          'flex min-h-screen flex-col font-sans antialiased',
           figtree.variable,
           playfair.variable
         )}
