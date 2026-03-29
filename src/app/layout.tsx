@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://adejoh.dev'),
   title: {
     template: '%s | Sunday Ojochenemi Adejoh',
-    default: 'Sunday Ojochenemi Adejoh | Frontend Engineer'
+    default: 'Sunday Ojochenemi Adejoh | Fullstack Developer'
   },
   description:
-    'Sunday Ojochenemi Adejoh is a frontend engineer specializing in React and Next.js, building fast, modern, and user-focused web applications. He also develops full-stack applications with the MERN stack.',
+    'Sunday Ojochenemi Adejoh is a fullstack developer building fast, scalable, and user-focused web applications with React, Next.js, Node.js, and Django.',
   keywords: [
     'Sunday Adejoh',
     'Adejoh',
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sunday Ojochenemi Adejoh | Frontend Engineer',
+    title: 'Sunday Ojochenemi Adejoh | Fullstack Developer',
     description:
-      'Frontend engineer building fast, modern, and user-focused web applications with React, Next.js, and the MERN stack.'
+      'Fullstack developer building fast, scalable, and user-focused web applications with React, Next.js, Node.js, and Django.'
   }
 }
 
