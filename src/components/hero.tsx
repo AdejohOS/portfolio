@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import BackgroundPattern from './ui/bg-pattern'
 import SocialLinks from './social-links'
+import { Typewriter } from 'react-simple-typewriter'
 
 const container = {
   hidden: { opacity: 0 },
@@ -29,22 +30,31 @@ const Hero = () => {
 
       <div className='container max-w-6xl'>
         <div className='items-center gap-10 md:flex'>
-          {/* LEFT CONTENT */}
           <motion.div
             variants={container}
             initial='hidden'
             animate='show'
             className='mb-8 space-y-6 text-center md:text-left'
           >
-            {/* NAME */}
             <motion.h1 variants={item} className='title text-5xl'>
               Adejoh O. Sunday
             </motion.h1>
 
-            {/* POSITION */}
-            <motion.p variants={item} className='text-2xl font-semibold'>
-              <span className='rounded-md bg-[#FFF799] px-2 dark:text-background'>
-                Fullstack Developer (React • Node.js • Django)
+            <motion.p className='text-2xl font-semibold'>
+              <span className='rounded-md bg-[#FFF799] px-2 shadow-[0_0_20px_rgba(255,247,153,0.4)] dark:text-background'>
+                <Typewriter
+                  words={[
+                    'Fullstack Developer',
+                    'React Specialist',
+                    'Next.js Engineer'
+                  ]}
+                  loop={true}
+                  cursor
+                  typeSpeed={60}
+                  deleteSpeed={40}
+                  delaySpeed={1500}
+                />{' '}
+                (React • Node.js • Django)
               </span>
             </motion.p>
 
@@ -59,8 +69,8 @@ const Hero = () => {
               variants={item}
               className='max-w-[500px] text-muted-foreground'
             >
-              I build fast, scalable, and user-focused web applications with
-              React, Next.js, Node.js, and Django.
+              Fullstack developer creating fast, scalable, and user-focused
+              products with React, Next.js, Node.js, and Django.
             </motion.p>
 
             {/* SOCIALS */}
@@ -68,7 +78,6 @@ const Hero = () => {
               <SocialLinks />
             </motion.div>
 
-            {/* CTA BUTTONS */}
             <motion.div
               variants={item}
               className='flex flex-col gap-3 sm:flex-row sm:items-center'
